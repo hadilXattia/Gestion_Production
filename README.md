@@ -67,15 +67,15 @@ Ouvrir le dossier backend dans IntelliJ IDEA
 Lancer la classe ProductionApplication.java
 
 ou bien avec docker
-`cd backend`
+`cd production-system`
 `docker build -t production-backend .`
 `docker run -p 8080:8080 production-backend`
 #### 3. Lancer le frontend (Angular)
-`cd frontend`
+`cd frontend-production`
 `npm install`
 `ng serve`
 ou bien avec docker
-`cd frontend`
+`cd frontend-production`
 `docker build -t production-frontend .`
 `docker run -p 4200:80 production-frontend`
 #### 4. Accéder à l'application
