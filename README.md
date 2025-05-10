@@ -48,7 +48,7 @@ L'application offre une interface moderne et intuitive pour les opérateurs et l
 - Java 17 ou supérieur
 - Node.js et npm
 - Angular CLI (`npm install -g @angular/cli`)
-- Docker (et Docker Compose, optionnel)
+- Docker 
 - Git
 
 ---
