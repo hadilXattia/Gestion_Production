@@ -32,9 +32,9 @@ import { MatButtonModule } from '@angular/material/button';
           <input matInput placeholder="État" [(ngModel)]="machine.etat" name="etat" required>
         </mat-form-field>
 
-     <mat-form-field class="full-width">
-  <input matInput type="date" placeholder="Maintenance Prochaine" [(ngModel)]="machine.maintenanceProchaine" name="maintenanceProchaine">
-</mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput type="date" placeholder="Maintenance Prochaine" [(ngModel)]="machine.maintenanceProchaine" name="maintenanceProchaine" required>
+        </mat-form-field>
 
         <button mat-raised-button color="primary" type="submit">Ajouter</button>
       </form>

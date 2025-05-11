@@ -24,9 +24,8 @@
 <!-- Maintenance Column -->
 <ng-container matColumnDef="maintenanceProchaine">
   <th mat-header-cell *matHeaderCellDef> Maintenance Prochaine </th>
-<td mat-cell *matCellDef="let machine">
-  {{ machine.maintenanceProchaine ? (machine.maintenanceProchaine | date:'yyyy-MM-dd') : 'Non planifiée' }}
-</td></ng-container>
+  <td mat-cell *matCellDef="let machine"> {{ machine.maintenanceProchaine | date:'yyyy-MM-dd' }} </td>
+</ng-container>
 
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">

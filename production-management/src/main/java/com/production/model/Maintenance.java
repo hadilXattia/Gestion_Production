@@ -57,6 +57,4 @@ public class Maintenance {
     public void setType(String type) {
         this.type = type;
     }
-
-    // Getters and Setters
 }
