@@ -1,0 +1,17 @@
+.full-width {
+  width: 100%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+mat-card {
+  margin: 20px;
+  padding: 20px;
+}
+.mt-4 {
+  margin-top: 1rem;
+}

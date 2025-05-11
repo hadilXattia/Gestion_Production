@@ -1,0 +1,59 @@
+<!-- Add Button -->
+<mat-card>
+  <button mat-raised-button color="primary" (click)="openAjouterDialog()">
+    <mat-icon>person_add</mat-icon> Ajouter un Technicien
+  </button>
+</mat-card>
+
+<!-- List of Techniciens -->
+<mat-card class="mt-4">
+  <h2>Liste des Techniciens</h2>
+
+  <table mat-table [dataSource]="techniciens" class="mat-elevation-z8" style="width: 100%">
+
+    <!-- Nom -->
+    <ng-container matColumnDef="nom">
+      <th mat-header-cell *matHeaderCellDef> Nom </th>
+      <td mat-cell *matCellDef="let t"> {{ t.nom }} </td>
+    </ng-container>
+
+    <!-- Compétences -->
+    <ng-container matColumnDef="competences">
+      <th mat-header-cell *matHeaderCellDef> Compétences </th>
+      <td mat-cell *matCellDef="let t"> {{ t.competences }} </td>
+    </ng-container>
+
+    <!-- Machine -->
+    <ng-container matColumnDef="machine">
+      <th mat-header-cell *matHeaderCellDef> Machine Assignée </th>
+      <td mat-cell *matCellDef="let t">
+     <mat-select
+  [ngModel]="t.machineAssignee?.id"
+  (ngModelChange)="assignMachine(t.id, $event)"
+  placeholder="Assigner machine">
+  <mat-option *ngFor="let machine of machines" [value]="machine.id">
+    {{ machine.nom }}
+  </mat-option>
+</mat-select>
+      </td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let t">
+        <button mat-icon-button color="accent" (click)="openDetailDialog(t)">
+          <mat-icon>info</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" (click)="deleteTechnicien(t.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+      
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['nom', 'competences', 'machine', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['nom', 'competences', 'machine', 'actions']"></tr>
+  </table>
+</mat-card>

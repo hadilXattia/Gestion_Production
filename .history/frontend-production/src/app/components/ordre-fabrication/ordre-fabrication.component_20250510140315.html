@@ -1,0 +1,56 @@
+<mat-card class="mt-4">
+  <button mat-raised-button color="primary" (click)="openAjouterDialog()">
+    <mat-icon>add</mat-icon> Ajouter un Ordre de Fabrication
+  </button>
+</mat-card>
+
+<mat-card class="mt-4">
+  <table mat-table [dataSource]="ordres" class="mat-elevation-z8" style="width: 100%;">
+    
+    <ng-container matColumnDef="produit">
+      <th mat-header-cell *matHeaderCellDef>Produit</th>
+      <td mat-cell *matCellDef="let ordre"> {{ ordre.produit?.nom }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantite">
+      <th mat-header-cell *matHeaderCellDef>Quantité</th>
+      <td mat-cell *matCellDef="let ordre"> {{ ordre.quantite }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let ordre"> {{ ordre.date }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="machine">
+      <th mat-header-cell *matHeaderCellDef>Machine</th>
+      <td mat-cell *matCellDef="let ordre"> {{ ordre.machine?.nom }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="statut">
+      <th mat-header-cell *matHeaderCellDef>Statut</th>
+      <td mat-cell *matCellDef="let ordre">
+        <mat-select [(ngModel)]="ordre.statut" (selectionChange)="updateStatut(ordre.id, ordre.statut)">
+          <mat-option value="En attente">En attente</mat-option>
+          <mat-option value="En cours">En cours</mat-option>
+          <mat-option value="Terminé">Terminé</mat-option>
+        </mat-select>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let ordre">
+      <button mat-icon-button color="accent" (click)="openDetailDialog(ordre)">
+          <mat-icon>info</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteOrdre(ordre.id)">
+        <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>

@@ -1,0 +1,27 @@
+<!-- Add Machine Button -->
+<mat-card class="mt-4">
+  <button mat-raised-button color="primary" (click)="openAjouterMachineDialog()">
+    <mat-icon>add</mat-icon> Ajouter une Machine
+  </button>
+</mat-card>
+
+<!-- Stat Cards -->
+<div class="stat-container mt-4">
+  <mat-card class="stat-card total mat-elevation-z4">
+    <div class="stat-icon"><mat-icon>precision_manufacturing</mat-icon></div>
+    <div class="stat-title">Total Machines</div>
+    <div class="stat-value">{{ totalMachines }}</div>
+  </mat-card>
+
+  <mat-card class="stat-card active mat-elevation-z4">
+    <div class="stat-icon"><mat-icon>check_circle</mat-icon></div>
+    <div class="stat-title">Machines Actives</div>
+    <div class="stat-value">{{ machinesActives }}</div>
+  </mat-card>
+
+  <mat-card class="stat-card panne mat-elevation-z4">
+    <div class="stat-icon"><mat-icon>warning</mat-icon></div>
+    <div class="stat-title">Machines en Panne</div>
+    <div class="stat-value">{{ machinesEnPanne }}</div>
+  </mat-card>
+</div>

@@ -1,0 +1,52 @@
+.full-width {
+  width: 100%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+mat-card {
+  margin: 20px;
+  padding: 20px;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+.stat-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 12px;
+  color: white;
+}
+
+.stat-card.total {
+  background-color: #3f51b5;
+}
+.stat-card.active {
+  background-color: #4caf50;
+}
+.stat-card.panne {
+  background-color: #f44336;
+}
+
+.stat-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+}
