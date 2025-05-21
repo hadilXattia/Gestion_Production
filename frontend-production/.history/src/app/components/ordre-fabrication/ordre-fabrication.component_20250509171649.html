@@ -1,0 +1,37 @@
+<h2>Ordres de Fabrication</h2>
+
+<table border="1">
+  <tr>
+    <th>Produit</th>
+    <th>Quantité</th>
+    <th>Date</th>
+    <th>Machine</th>
+    <th>Statut</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let ordre of ordres">
+    <td>{{ ordre.produit?.nom }}</td>
+    <td>{{ ordre.quantite }}</td>
+    <td>{{ ordre.date }}</td>
+    <td>{{ ordre.machine?.nom }}</td>
+    <td>
+      <select [(ngModel)]="ordre.statut" (change)="updateStatut(ordre.id, ordre.statut)">
+        <option value="En attente">En attente</option>
+        <option value="En cours">En cours</option>
+        <option value="Terminé">Terminé</option>
+      </select>
+    </td>
+    <td>
+      <button (click)="deleteOrdre(ordre.id)">Supprimer</button>
+    </td>
+  </tr>
+</table>
+
+<h3>Ajouter un Ordre de Fabrication</h3>
+<form (ngSubmit)="addOrdre()">
+  <select [(ngModel)]="newOrdre.produit" name="produit" required>
+    <option value="">Choisir un produit</option>
+    <option *ngFor="let produit of produits" [ngValue]="produit">{{ produit.nom }}</option>
+  </select>
+
+  <input type="number" [(ngModel)]="newOrdre.quantite" name="quantite" placeholder 

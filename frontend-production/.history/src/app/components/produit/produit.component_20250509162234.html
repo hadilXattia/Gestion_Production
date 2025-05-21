@@ -1,0 +1,30 @@
+<p>produit works!</p>
+<h2>Liste des Produits</h2>
+
+<table border="1">
+  <tr>
+    <th>Nom</th>
+    <th>Type</th>
+    <th>Stock</th>
+    <th>Fournisseur</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let produit of produits">
+    <td>{{ produit.nom }}</td>
+    <td>{{ produit.type }}</td>
+    <td>{{ produit.stock }}</td>
+    <td>{{ produit.fournisseur }}</td>
+    <td>
+      <button (click)="deleteProduit(produit.id)">Supprimer</button>
+    </td>
+  </tr>
+</table>
+
+<h3>Ajouter un Produit</h3>
+<form (ngSubmit)="addProduit()">
+  <input type="text" placeholder="Nom" [(ngModel)]="newProduit.nom" name="nom" required />
+  <input type="text" placeholder="Type" [(ngModel)]="newProduit.type" name="type" required />
+  <input type="number" placeholder="Stock" [(ngModel)]="newProduit.stock" name="stock" required />
+  <input type="text" placeholder="Fournisseur" [(ngModel)]="newProduit.fournisseur" name="fournisseur" required />
+  <button type="submit">Ajouter</button>
+</form>

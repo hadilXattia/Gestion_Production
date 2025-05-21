@@ -1,0 +1,53 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+
+// Modules Angular Material à importer
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
+// FormsModule pour [(ngModel)]
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-login',
+  standalone: true,   // <--- important, pour un standalone component
+  imports: [
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,MatIconModule,CommonModule,
+  ],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
+})
+export class LoginComponent {
+  credentials = { username: '', password: '' };
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+login() {
+  this.authService.login(this.credentials).subscribe({
+    next: (response: any) => {
+      const token = response.token; // récupère le token du backend
+      if (token) {
+        localStorage.setItem('token', token); // stocke dans localStorage
+        this.router.navigate(['/machines']); // redirige
+      } else {
+        alert('Token manquant dans la réponse');
+      }
+    },
+    error: (err) => {
+      console.error('Erreur de login :', err);
+      alert('Login échoué');
+    }
+  });
+}
+
+
+}

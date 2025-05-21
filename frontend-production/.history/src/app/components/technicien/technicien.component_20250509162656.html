@@ -1,0 +1,29 @@
+<h2>Liste des Techniciens</h2>
+
+<table border="1">
+  <tr>
+    <th>Nom</th>
+    <th>Compétences</th>
+    <th>Machine Assignée</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let technicien of techniciens">
+    <td>{{ technicien.nom }}</td>
+    <td>{{ technicien.competences }}</td>
+    <td>{{ technicien.machineAssignee?.nom || 'Non assignée' }}</td>
+    <td>
+      <button (click)="deleteTechnicien(technicien.id)">Supprimer</button>
+      <select (change)="assignMachine(technicien.id, $event.target.value)">
+        <option value="">Assigner une machine</option>
+        <option *ngFor="let machine of machines" [value]="machine.id">{{ machine.nom }}</option>
+      </select>
+    </td>
+  </tr>
+</table>
+
+<h3>Ajouter un Technicien</h3>
+<form (ngSubmit)="addTechnicien()">
+  <input type="text" placeholder="Nom" [(ngModel)]="newTechnicien.nom" name="nom" required />
+  <input type="text" placeholder="Compétences" [(ngModel)]="newTechnicien.competences" name="competences" required />
+  <button type="submit">Ajouter</button>
+</form>

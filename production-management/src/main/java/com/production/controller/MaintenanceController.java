@@ -4,6 +4,7 @@ import com.production.model.Maintenance;
 import com.production.model.Machine;
 import com.production.repository.MaintenanceRepository;
 import com.production.repository.MachineRepository;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -23,11 +24,15 @@ public class MaintenanceController {
         this.machineRepository = machineRepository;
     }
 
+    // Accessible par ADMIN & TECHNICIEN
+    @PreAuthorize("hasAnyRole('ADMIN', 'TECHNICIEN')")
     @GetMapping
     public List<Maintenance> getAll() {
         return repository.findAll();
     }
 
+    // Seulement ADMIN peut créer une maintenance
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public Maintenance create(@RequestBody Maintenance maintenance) {
         Maintenance saved = repository.save(maintenance);
@@ -35,6 +40,8 @@ public class MaintenanceController {
         return saved;
     }
 
+    // Seulement ADMIN peut modifier une maintenance
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public Maintenance update(@PathVariable Long id, @RequestBody Maintenance maintenance) {
         maintenance.setId(id);
@@ -43,6 +50,8 @@ public class MaintenanceController {
         return updated;
     }
 
+    // Seulement ADMIN peut supprimer une maintenance
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         Maintenance m = repository.findById(id).orElse(null);
@@ -53,6 +62,8 @@ public class MaintenanceController {
         }
     }
 
+    // Accessible par ADMIN & TECHNICIEN
+    @PreAuthorize("hasAnyRole('ADMIN', 'TECHNICIEN')")
     @GetMapping("/planifiee")
     public List<Maintenance> getPlannedMaintenance() {
         return repository.findAll().stream()
@@ -77,5 +88,4 @@ public class MaintenanceController {
             machineRepository.save(machine);
         }
     }
-
 }

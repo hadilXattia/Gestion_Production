@@ -1,0 +1,54 @@
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>Créer un compte</mat-card-title>
+    <mat-card-subtitle>Bienvenue, inscrivez-vous pour commencer</mat-card-subtitle>
+  </mat-card-header>
+
+  <form (ngSubmit)="register()" #registerForm="ngForm" novalidate>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nom d'utilisateur</mat-label>
+      <input matInput
+             [(ngModel)]="user.username"
+             name="username"
+             required
+             #username="ngModel" />
+      <mat-icon matPrefix>person</mat-icon>
+      <mat-error *ngIf="username.invalid && username.touched">
+        Le nom d'utilisateur est requis.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput
+             [(ngModel)]="user.password"
+             name="password"
+             type="password"
+             required
+             #password="ngModel" />
+      <mat-icon matPrefix>lock</mat-icon>
+      <mat-error *ngIf="password.invalid && password.touched">
+        Le mot de passe est requis.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Rôle</mat-label>
+      <mat-select [(ngModel)]="user.role" name="role" required #role="ngModel">
+        <mat-option value="TECHNICIEN">Technicien</mat-option>
+        <mat-option value="ADMIN">Admin</mat-option>
+      </mat-select>
+      <mat-error *ngIf="role.invalid && role.touched">
+        Le rôle est requis.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button
+            color="primary"
+            class="full-width"
+            type="submit"
+            [disabled]="registerForm.invalid">
+      Créer
+    </button>
+  </form>
+</mat-card>

@@ -1,0 +1,43 @@
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>Connexion</mat-card-title>
+    <mat-card-subtitle>Bienvenue, connectez-vous pour continuer</mat-card-subtitle>
+  </mat-card-header>
+
+  <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nom d'utilisateur</mat-label>
+      <input matInput
+             [(ngModel)]="credentials.username"
+             name="username"
+             required
+             #username="ngModel" />
+      <mat-icon matPrefix>person</mat-icon>
+      <mat-error *ngIf="username.invalid && username.touched">
+        Le nom d'utilisateur est requis.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput
+             [(ngModel)]="credentials.password"
+             name="password"
+             type="password"
+             required
+             #password="ngModel" />
+      <mat-icon matPrefix>lock</mat-icon>
+      <mat-error *ngIf="password.invalid && password.touched">
+        Le mot de passe est requis.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button
+            color="primary"
+            class="full-width"
+            type="submit"
+            [disabled]="loginForm.invalid">
+      Se connecter
+    </button>
+  </form>
+</mat-card>

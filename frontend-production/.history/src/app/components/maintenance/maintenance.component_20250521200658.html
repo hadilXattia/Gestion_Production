@@ -1,0 +1,73 @@
+<!-- Stat Cards -->
+<div class="stat-container mt-4">
+  <mat-card class="stat-card total mat-elevation-z4">
+    <div class="stat-icon"><mat-icon>build</mat-icon></div>
+    <div class="stat-title">Total Maintenances</div>
+    <div class="stat-value">{{ totalMaintenances }}</div>
+  </mat-card>
+
+  <mat-card class="stat-card active mat-elevation-z4">
+    <div class="stat-icon"><mat-icon>construction</mat-icon></div>
+    <div class="stat-title">Préventives</div>
+    <div class="stat-value">{{ preventives }}</div>
+  </mat-card>
+
+  <mat-card class="stat-card panne mat-elevation-z4">
+    <div class="stat-icon"><mat-icon>report_problem</mat-icon></div>
+    <div class="stat-title">Curatives</div>
+    <div class="stat-value">{{ curatives }}</div>
+  </mat-card>
+</div>
+
+<mat-card>
+  <button mat-raised-button color="primary" (click)="openAjouterDialog()" *ngIf="isAdmin">
+    <mat-icon>add</mat-icon> Ajouter une Maintenance
+  </button>
+</mat-card>
+
+<mat-card class="mt-4">
+  <h2>Suivi de maintenance</h2>
+
+  <table mat-table [dataSource]="maintenances" class="mat-elevation-z8" style="width: 100%">
+
+    <ng-container matColumnDef="machine">
+      <th mat-header-cell *matHeaderCellDef>Machine</th>
+      <td mat-cell *matCellDef="let m"> {{ m.machine?.nom }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="technicien">
+      <th mat-header-cell *matHeaderCellDef>Technicien</th>
+      <td mat-cell *matCellDef="let m"> {{ m.technicien?.nom }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let m"> {{ m.date }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let m"> {{ m.type }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let m">
+        <button mat-icon-button color="accent" (click)="openDetailDialog(m)">
+          <mat-icon>info</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" (click)="deleteMaintenance(m.id)" *ngIf="isAdmin">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="openUpdateDialog(m)" *ngIf="isAdmin">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['machine', 'technicien', 'date', 'type', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['machine', 'technicien', 'date', 'type', 'actions'];"></tr>
+  </table>
+</mat-card>

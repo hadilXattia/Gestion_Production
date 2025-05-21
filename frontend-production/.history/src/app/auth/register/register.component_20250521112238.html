@@ -1,0 +1,24 @@
+<mat-card>
+  <h2>Créer un compte</h2>
+  <form (ngSubmit)="register()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nom d'utilisateur</mat-label>
+      <input matInput [(ngModel)]="user.username" name="username" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput [(ngModel)]="user.password" name="password" type="password" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Rôle</mat-label>
+      <mat-select [(ngModel)]="user.role" name="role" required>
+        <mat-option value="TECHNICIEN">Technicien</mat-option>
+        <mat-option value="ADMIN">Admin</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Créer</button>
+  </form>
+</mat-card>

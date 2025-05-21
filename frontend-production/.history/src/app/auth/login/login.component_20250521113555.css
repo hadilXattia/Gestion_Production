@@ -1,0 +1,77 @@
+.login-card {
+  max-width: 700px;
+  margin: 100px auto;
+  padding: 20px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+.full-width {
+  width: 100%;
+  margin-top: 16px;
+}
+
+mat-card-header {
+  margin-bottom: 24px;
+}
+
+mat-card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+mat-card-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 4px;
+}
+/* Style des champs input Angular Material */
+.mat-form-field {
+  /* Ajout d’une ombre légère au focus */
+  transition: box-shadow 0.3s ease;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  border-radius: 8px;
+
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline {
+  border-color: #3f51b5; /* couleur primaire */
+  box-shadow: 0 0 8px rgba(63, 81, 181, 0.3);
+    padding: 10px;
+}
+
+/* Couleur de la bordure par défaut */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  border-color: #ccc;
+}
+
+/* Changement de la couleur du label quand focus */
+.mat-form-field-label {
+  transition: color 0.3s ease;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-label {
+  color: #3f51b5;
+}
+
+/* Placeholder plus clair */
+.mat-input-element::placeholder {
+  color: #999;
+  opacity: 1; /* Pour être visible dans tous les navigateurs */
+}
+
+/* Padding à l’intérieur des inputs pour laisser de la place à l’icône */
+.mat-form-field-prefix {
+  margin-right: 8px;
+  color: #666;
+}
+
+/* Texte saisi */
+.mat-input-element {
+  font-size: 1rem;
+  padding: 12px 8px;
+  border-radius: 8px;
+}
+

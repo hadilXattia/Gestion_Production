@@ -1,0 +1,137 @@
+:root {
+  --primary-color: #3f51b5;
+  --primary-color-light: #6573c3;
+  --input-bg: rgba(255 255 255 / 0.85);
+  --shadow-color: rgba(0, 0, 0, 0.12);
+}
+
+.login-card {
+  background-color: #ffffffcc; /* blanc avec un peu de transparence */
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 28px;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px var(--shadow-color);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+mat-card-header {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+mat-card-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  letter-spacing: 0.04em;
+}
+
+mat-card-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 8px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.full-width {
+  width: 100%;
+  margin-top: 20px;
+  display: block;
+}
+
+.mat-form-field {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  background: var(--input-bg);
+  border-radius: 12px;
+  padding: 4px 8px;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  border-radius: 12px;
+  border-color: #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 12px var(--primary-color-light);
+}
+
+.mat-form-field-label {
+  transition: color 0.3s ease;
+  font-weight: 600;
+  color: #444;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-label {
+  color: var(--primary-color);
+}
+
+.mat-input-element {
+  font-size: 1.1rem;
+  padding: 14px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+  color: #222;
+  background: transparent;
+}
+
+.mat-input-element::placeholder {
+  color: #999;
+  opacity: 1;
+  font-style: italic;
+}
+
+.mat-form-field-prefix {
+  margin-right: 12px;
+  color: var(--primary-color-light);
+  font-size: 20px;
+}
+
+mat-error {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #d32f2f;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+button.mat-raised-button {
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 14px 0;
+  border-radius: 14px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button.mat-raised-button:disabled {
+  background-color: #9fa8da !important;
+  color: #eee !important;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+button.mat-raised-button:not(:disabled):hover {
+  background-color: var(--primary-color-light);
+  box-shadow: 0 8px 20px rgba(63, 81, 181, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 28px 20px;
+    margin: 30px 10px;
+  }
+
+  mat-card-title {
+    font-size: 1.8rem;
+  }
+}

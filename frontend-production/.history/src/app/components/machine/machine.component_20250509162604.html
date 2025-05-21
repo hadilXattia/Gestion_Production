@@ -1,0 +1,26 @@
+<h2>Liste des Machines</h2>
+
+<table border="1">
+  <tr>
+    <th>Nom</th>
+    <th>État</th>
+    <th>Maintenance Prochaine</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let machine of machines">
+    <td>{{ machine.nom }}</td>
+    <td>{{ machine.etat }}</td>
+    <td>{{ machine.maintenanceProchaine }}</td>
+    <td>
+      <button (click)="deleteMachine(machine.id)">Supprimer</button>
+    </td>
+  </tr>
+</table>
+
+<h3>Ajouter une Machine</h3>
+<form (ngSubmit)="addMachine()">
+  <input type="text" placeholder="Nom" [(ngModel)]="newMachine.nom" name="nom" required />
+  <input type="text" placeholder="État" [(ngModel)]="newMachine.etat" name="etat" required />
+  <input type="date" placeholder="Maintenance" [(ngModel)]="newMachine.maintenanceProchaine" name="maintenanceProchaine" required />
+  <button type="submit">Ajouter</button>
+</form>

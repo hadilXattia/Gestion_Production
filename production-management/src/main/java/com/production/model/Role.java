@@ -1,4 +1,6 @@
 package com.production.model;
 
-public class Role {
+public enum Role {
+    ADMIN,
+    TECHNICIEN
 }

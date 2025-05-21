@@ -1,0 +1,39 @@
+<h2>Planification des Maintenances</h2>
+
+<table border="1">
+  <tr>
+    <th>Machine</th>
+    <th>Technicien</th>
+    <th>Date</th>
+    <th>Type</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let m of maintenances">
+    <td>{{ m.machine?.nom }}</td>
+    <td>{{ m.technicien?.nom }}</td>
+    <td>{{ m.date }}</td>
+    <td>{{ m.type }}</td>
+    <td>
+      <button (click)="deleteMaintenance(m.id)">Supprimer</button>
+    </td>
+  </tr>
+</table>
+
+<h3>Ajouter une Maintenance</h3>
+<form (ngSubmit)="addMaintenance()">
+  <select [(ngModel)]="newMaintenance.machine" name="machine" required>
+    <option value="">Choisir une machine</option>
+    <option *ngFor="let machine of machines" [ngValue]="machine">{{ machine.nom }}</option>
+  </select>
+
+  <select [(ngModel)]="newMaintenance.technicien" name="technicien" required>
+    <option value="">Choisir un technicien</option>
+    <option *ngFor="let t of techniciens" [ngValue]="t">{{ t.nom }}</option>
+  </select>
+
+  <input type="date" [(ngModel)]="newMaintenance.date" name="date" required />
+
+  <input type="text" [(ngModel)]="newMaintenance.type" name="type" placeholder="Type de maintenance" required />
+
+  <button type="submit">Planifier</button>
+</form>
