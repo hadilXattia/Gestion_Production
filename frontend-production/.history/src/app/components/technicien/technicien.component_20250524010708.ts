@@ -57,7 +57,7 @@ export class TechnicienComponent implements OnInit {
   get isAdmin(): boolean {
     return this.authService.isAdmin();
   }
-
+isAdmin = false;
   ngOnInit() {
     this.loadTechniciens();
     this.loadMachines();

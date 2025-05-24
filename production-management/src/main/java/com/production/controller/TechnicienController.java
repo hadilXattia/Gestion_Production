@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/techniciens")
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class TechnicienController {
 
     private final TechnicienRepository repository;

@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "TEXT")
+//    @Column(columnDefinition = "TEXT")
     private Long id;
     @Lob
     private String image;

@@ -97,7 +97,7 @@ export class TechnicienComponent implements OnInit {
     if (!this.isAdmin) return;  // contrôle admin
     this.technicienService.assignMachine(technicienId, machineId).subscribe(() => {
       this.loadTechniciens();
-      
+       return this.http.patch(url, {});
     });
   }
 
